@@ -9,7 +9,7 @@ Updated: 2026-11-17
 - Repository visibility was PUBLIC at inspection; user should review whether to switch to PRIVATE.
 
 ## Not yet done
-- No website/application code, database, authentication, real product images, 3D scene, deployment, payments, or functional/visual tests confirmed.
+- No production storefront, database, authentication, real retailer photography, deployment, or payments confirmed.
 - No rights/contract from the retailer confirmed.
 - No desktop/mobile design direction approved.
 
@@ -22,3 +22,14 @@ Updated: 2026-11-17
 
 ## Acceptance evidence needed
 PR links, commit hashes, screenshots/recordings, test commands/results, known gaps and next handoff.
+
+## Issue #3 · Prototype review
+
+- Three runnable design routes are implemented on `codex/shop-city-design-prototypes` based on `docs/shop-city-foundation`.
+- Typecheck, production build and six Edge cases passed. Full-page captures are in `evidence/`. See `DESIGN_REVIEW.md` for scope and limitations.
+- Media and inventory are fictional placeholders. No application backend or hosted deployment was added.
+- Next: compare the six captures and select a direction before implementation. Keep the foundation and design PRs unmerged pending user review.
+
+## Issue #5 · Hybrid review
+
+Added `/concepts/hybrid` on `codex/shop-city-hybrid`, based on the unmerged PR #4 prototype commit `b7d4a1f`. The review PR targets `docs/shop-city-foundation` as requested and includes the prototype dependency. Typecheck, production build, and eight Edge viewport checks passed. Six new captures document the hybrid and its scroll transition. See [design review](DESIGN_REVIEW.md#issue-5--hybrid-study-in-charcoal). Review the visual direction before application or hosting work.
