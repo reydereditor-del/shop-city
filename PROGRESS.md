@@ -22,3 +22,10 @@ Updated: 2026-11-17
 
 ## Acceptance evidence needed
 PR links, commit hashes, screenshots/recordings, test commands/results, known gaps and next handoff.
+
+## Issue #3 · Prototype review
+
+- Three runnable design routes are implemented on `codex/shop-city-design-prototypes` based on `docs/shop-city-foundation`.
+- Typecheck, production build and six Edge cases passed. Full-page captures are in `evidence/`. See `DESIGN_REVIEW.md` for scope and limitations.
+- Media and inventory are fictional placeholders. No application backend or hosted deployment was added.
+- Next: compare the six captures and select a direction before implementation. Keep the foundation and design PRs unmerged pending user review.

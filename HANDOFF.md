@@ -21,3 +21,7 @@ Recommend Next.js/TypeScript/Tailwind + PostgreSQL/Supabase, awaiting implementa
 
 ## Continuity rule
 At each milestone update PROGRESS.md and HANDOFF.md with hashes, tests, screenshots, unresolved items and concrete next task.
+
+## Issue #3 handoff
+
+Review branch: `codex/shop-city-design-prototypes`, based on `docs/shop-city-foundation` at `522b9a6`. Run and verification instructions and linked screenshots are in `README.md`. `DESIGN_REVIEW.md` covers artwork provenance, known gaps and design critique. No production integration was made. After the user chooses a concept, lock its desktop and mobile visual target, confirm sample media constraints, then scope the single product publish slice.
