@@ -41,10 +41,18 @@ const concepts: Concept[] = [
   },
 ];
 
+const frame = concepts[0];
+const hybrid: Concept = {
+  key: 'hybrid', route: 'hybrid', name: 'Hybrid', headline: 'Study in charcoal',
+  intro: 'A sculpted shoulder, seen first in shadow and then in the light.',
+  caption: 'The studio rail', heroAlt: frame.heroAlt, products: frame.products,
+};
+concepts.push(hybrid);
+
 const formatUZS = new Intl.NumberFormat('en-US');
 const priceLabel = (price: number) => formatUZS.format(price).replaceAll(',', ' ') + ' UZS';
 const image = (concept: Concept, slot: string, alt: string, priority = false) =>
-  `<img src="/media/${concept.key}-${slot}.webp" alt="${alt}" width="768" height="512" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  `<img src="/media/${concept.key === 'hybrid' ? 'frame' : concept.key}-${slot}.webp" alt="${alt}" width="768" height="512" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 const route = (concept: Concept) => '/concepts/' + concept.route;
 const current = concepts.find((concept) => route(concept) === location.pathname.replace(/\/$/, ''));
 const app = document.querySelector<HTMLDivElement>('#app')!;
@@ -65,6 +73,12 @@ function hero(concept: Concept) {
   const copy = (cta: string) => `<div class="hero-copy"><p class="eyebrow">${concept.name}</p>
     <h1>${concept.headline}</h1><p class="intro">${concept.intro}</p><a class="cta" href="#collection">${cta} <span aria-hidden="true">↘</span></a></div>`;
   const photo = `<figure class="hero-photo">${image(concept, 'hero', concept.heroAlt, true)}</figure>`;
+  if (concept.key === 'hybrid') return `<section class="hero hybrid-hero" aria-labelledby="hybrid-title">
+    <figure class="hero-photo">${image(concept, 'hero', concept.heroAlt, true)}</figure>
+    <div class="hero-copy"><p class="eyebrow">The charcoal edit</p><h1 id="hybrid-title">Study in <br>charcoal</h1>
+      <p class="intro">${concept.intro}</p><a class="cta" href="#collection">Explore the edit <span aria-hidden="true">↘</span></a></div>
+    <p class="hybrid-credit">Sculpted jacket <span aria-hidden="true">/</span> Charcoal</p>
+    </section>`;
   if (concept.key === 'frame') return `<section class="hero frame-hero">${photo}${copy('Shop the edit')}</section>`;
   if (concept.key === 'studio') return `<section class="hero studio-hero">${copy('Browse garments')}${photo}
     <figure class="hero-detail">${image(concept, 'one', 'Close view of a topstitched seam on sage twill')}<figcaption>Twill · seam detail</figcaption></figure></section>`;
@@ -76,6 +90,12 @@ function hero(concept: Concept) {
 }
 
 function editorial(concept: Concept) {
+  if (concept.key === 'hybrid') return `<section class="editorial hybrid-editorial" id="editorial" aria-labelledby="light-title">
+    <div class="hybrid-editorial-copy"><p class="eyebrow">From campaign to studio</p><h2 id="light-title">See it in light.</h2>
+      <p>Side light traces the shoulder. A closer studio view shows how the lapel folds across the front.</p>
+      <a href="#product" data-product="0">Inspect the sculpted jacket <span aria-hidden="true">↗</span></a></div>
+    <figure class="hybrid-study"><div class="hybrid-study-image">${image(concept, 'one', 'Close studio view showing the jacket’s layered lapel and shoulder')}</div>
+      <figcaption>Studio view · Sculpted jacket</figcaption></figure></section>`;
   if (concept.key === 'frame') return `<section class="editorial frame-editorial" id="editorial"><p class="eyebrow">The evening edit</p><h2>Shape, then shadow.</h2><p>A jacket with an emphatic shoulder. A straight line through the trouser. Three pieces built around silhouette.</p></section>`;
   if (concept.key === 'studio') return `<section class="editorial studio-editorial" id="editorial"><p class="eyebrow">The material edit</p><h2>Read the garment.</h2><p>Start with the straight cut of the jacket, then follow the topstitching along the edge. What you see here carries through to the product gallery.</p><a href="#product" data-product="0">Inspect the chore jacket <span aria-hidden="true">↗</span></a></section>`;
   return `<section class="editorial city-editorial" id="editorial"><p class="eyebrow">The street edit</p><h2>The blue layer.</h2><p>A cobalt overshirt gives dark denim a clear edge. The outfit breaks down into three garments you can browse individually.</p></section>`;
@@ -91,7 +111,9 @@ function collection(concept: Concept) {
 function detail(concept: Concept, index: number) {
   const item = concept.products[index];
   const extra = concept.key === 'studio' && index === 0
-    ? `<figure class="detail-macro">${image(concept, 'one', 'Topstitching on the sage twill jacket')}</figure>` : '';
+    ? `<figure class="detail-macro">${image(concept, 'one', 'Topstitching on the sage twill jacket')}</figure>`
+    : concept.key === 'hybrid' && index === 0
+      ? `<figure class="detail-macro hybrid-macro" aria-hidden="true">${image(concept, 'one', '')}</figure>` : '';
   return `<div class="detail-visual"><figure>${image(concept, item.image, item.name + ' in ' + item.color)}</figure>${extra}</div>
     <div class="detail-copy"><p class="eyebrow">Product preview</p><h2 id="product-title" tabindex="-1">${item.name}</h2>
     <p class="price">${priceLabel(item.price)}</p><p>${item.description}</p>
@@ -128,7 +150,7 @@ if (current) {
   });
 } else {
   app.innerHTML = header() + `<main id="main" class="hub"><p class="eyebrow">Storefront design review</p>
-    <h1>Three ways to see the clothes.</h1><div class="hub-grid" id="concepts">
+    <h1>Storefront concept studies</h1><div class="hub-grid" id="concepts">
     ${concepts.map((item) => `<a href="${route(item)}">${image(item, 'hero', item.heroAlt)}<h2>${item.name} ↗</h2><p>${item.intro}</p></a>`).join('')}
     </div></main>` + footer();
 }

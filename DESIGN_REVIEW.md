@@ -25,3 +25,21 @@ All 12 WebP photos in `public/media` are original generated placeholders made fo
 - Edge mobile mode emulates viewport and touch. Physical devices, Safari and Firefox, assistive technologies, complete WCAG conformance, font coverage for Uzbek Latin and Russian, and measured Core Web Vitals remain unverified.
 
 The issue stops at visual review. No backend, accounts, checkout, payments or hosted preview are part of this branch.
+
+## Issue #5 · Hybrid: Study in charcoal
+
+The fourth route, `/concepts/hybrid`, follows the [PR #4 feedback](https://github.com/reydereditor-del/shop-city/pull/4#issuecomment-6955834081). At 1440 px the plum-black campaign, oversized Instrument Serif title, and portrait lead into a studio lapel crop that crosses the paper-colored section boundary. At 390 px the portrait, title and catalog link appear first. The featured jacket takes the largest position in the desktop rail and spans both columns on mobile. The inline retail preview combines a full front, a lapel crop, the UZS price, and sample size controls.
+
+FRAME is more direct as a campaign. The hybrid uses the same jacket across the dark and light sections to turn the transition into a product story. STUDIO is more systematic for comparing materials. The hybrid gives one SKU editorial priority, which suits an edited selection. Oversized serif type and the plum-to-paper palette are familiar fashion conventions. The same product still repeats despite the different crops. A future shoot could add a genuinely different view or fabric macro.
+
+The CSS view timeline retracts a translucent shadow over the editorial image as it enters the viewport. Text and links remain outside the effect. Reduced motion and browsers without timeline support get a fully lit image from first paint. The hybrid uses PR #4’s original generated FRAME placeholders, with no new source images or retailer-owned assets. Prices and availability are fictional.
+
+| Evidence | Desktop · 1440 × 900 | Emulated mobile · 390 × 844 |
+| --- | --- | --- |
+| Hybrid | [First screen](evidence/hybrid-desktop-fold.png) · [Full page](evidence/hybrid-desktop.png) | [First screen](evidence/hybrid-mobile-fold.png) · [Full page](evidence/hybrid-mobile.png) |
+| FRAME | [Full page](evidence/frame-noir-desktop.png) | [Full page](evidence/frame-noir-mobile.png) |
+| STUDIO | [Full page](evidence/studio-object-desktop.png) | [Full page](evidence/studio-object-mobile.png) |
+
+At the same desktop scroll position, compare the [active reveal](evidence/hybrid-transition-desktop.png) with [reduced motion](evidence/hybrid-transition-reduced-desktop.png). The hybrid full-page and first-screen captures show the static composition. Review covered CTA visibility, focal crops, studio handoff, card hierarchy and product layout.
+
+Typecheck and Vite build passed. The production bundle emitted 3.84 kB gzip JS and 4.99 kB gzip CSS. Playwright on Edge Chromium 157.0.4341.60 passed eight route/viewport cases. Hybrid checks cover overflow, first-screen CTA, UZS price, four comparison links, keyboard skip focus, Enter activation and focus transfer, size selection, image decode, and failed page/request detection. The shadow scale was about 0.28 partway through entry, below 0.01 at the end, and absent with reduced motion, at both sizes. Real phones, Safari, Firefox, assistive technology, a full accessibility audit, and Core Web Vitals remain unverified. The hybrid awaits visual sign-off.

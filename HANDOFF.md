@@ -5,7 +5,7 @@ Original premium fashion commerce demo for Shopcity uz, Yunusobod, Tashkent, Uzb
 
 ## Current reality (2026-11-17)
 GitHub: https://github.com/reydereditor-del/shop-city
-Foundation planning docs proposed on branch docs/shop-city-foundation, not necessarily merged. Repo was PUBLIC at inspection. No app code/database/deployment/test evidence. Do not claim otherwise.
+Foundation planning docs proposed on branch docs/shop-city-foundation, not necessarily merged. Repo was PUBLIC at inspection. The prototype branches have browser evidence. Production database and deployment are pending. Do not claim otherwise.
 
 ## Collaboration
 User uses Codex Web. This chat can manage GitHub via connected tools, but cannot directly send messages to the user's open Codex Web conversation. Give only necessary manual instructions; inspect Codex changes through GitHub. Avoid concurrent agents editing same branch.
@@ -25,3 +25,7 @@ At each milestone update PROGRESS.md and HANDOFF.md with hashes, tests, screensh
 ## Issue #3 handoff
 
 Review branch: `codex/shop-city-design-prototypes`, based on `docs/shop-city-foundation` at `522b9a6`. Run and verification instructions and linked screenshots are in `README.md`. `DESIGN_REVIEW.md` covers artwork provenance, known gaps and design critique. No production integration was made. After the user chooses a concept, lock its desktop and mobile visual target, confirm sample media constraints, then scope the single product publish slice.
+
+## Issue #5 · Hybrid handoff
+
+Run `npm ci` and `npm run dev`, then open `/concepts/hybrid`. The comparison routes remain available. Run `npm run typecheck`, `npm run build` and `npm run verify:browser` to reproduce checks. The [design review](DESIGN_REVIEW.md#issue-5--hybrid-study-in-charcoal) links captures, test limits and the comparison against FRAME and STUDIO. The feature branch inherits unmerged PR #4. The next decision is whether to retain the editorial transition and lead-product hierarchy after review.

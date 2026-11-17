@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the localhost address printed by Vite. The review hub links to all three concepts:
+Open the localhost address printed by Vite. The review hub links to the original concepts:
 
 - `/concepts/frame-noir`
 - `/concepts/studio-object`
@@ -30,3 +30,5 @@ These are full-page Edge screenshots, captured with desktop and emulated mobile 
 | CITY / EDIT | [Desktop](evidence/city-edit-desktop.png) | [Mobile](evidence/city-edit-mobile.png) |
 
 See [design and verification notes](DESIGN_REVIEW.md) for media provenance, art direction, browser assertions and remaining review work.
+
+The hybrid is also available at `/concepts/hybrid`. See [hybrid screenshots and test notes](DESIGN_REVIEW.md#issue-5--hybrid-study-in-charcoal).
